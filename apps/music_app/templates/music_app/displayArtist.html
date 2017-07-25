@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <h2>ARTIST NUMBER: {{ artist.id}}</h2>
+    <h3>ARTIST NAME: {{artist.artist_name}}</h3>   
+    <h3> ARTIST BIO: {{ artist.artist_bio}}</h3>
+    <h3>CREATED: {{artist.created_at}}</h3>
+
+    <a href='/{{artist.id}}/editArtist'>Edit</a> | <a href='/{{artist.id}}/artist_delete'>Delete</a> | <a href="/">Home</a><br>
+</body>
+</html>

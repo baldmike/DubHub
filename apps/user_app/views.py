@@ -39,6 +39,7 @@ def login(request):
     try:
         user = User.objects.login_validator(request.POST)
 
+<<<<<<< HEAD
         if user:
             request.session['first_name'] = user.first_name
             request.session['last_name'] = user.last_name

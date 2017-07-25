@@ -2,11 +2,6 @@ from __future__ import unicode_literals
  
 from django.db import models
 
-
-
-import re
-import bcrypt
-
 class Artist(models.Model):
     artist_name = models.CharField(max_length=255)
     artist_bio = models.CharField(max_length=255)
