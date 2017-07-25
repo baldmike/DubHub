@@ -25,9 +25,9 @@
     <td>{{artist.artist_name}}</td>
     <td>{{artist.artist_bio}}</td>
     <td>{{artist.created_at}}</td>
-    <td><a href="{% url 'music_app:viewArtist' id=artist.id %}">Show</a> | <a href="{% url 'music_app:editArtist' id=artist.id %}">Edit</a> | <a href="{% url 'music_app:deleteArtist' id=artist.id %}">Delete</a></td>
+    <td><a href="{% url 'music_app:viewArtist' artist_id=artist.id %}">Show</a> | <a href="{% url 'music_app:editArtist' artist_id=artist.id %}">Edit</a> | <a href="{% url 'music_app:deleteArtist' artist_id=artist.id %}">Delete</a></td>
     </tr>
-{% endfor %}
+    {% endfor %}
 </table>
    <a href="{% url 'music_app:addArtist' %}">ADD A NEW ARTIST</a>
 

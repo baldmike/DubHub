@@ -13,14 +13,14 @@ class Album(models.Model):
     album_year = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    artists = models.ForeignKey(Artist, related_name="albums")
+    artist = models.ForeignKey(Artist, related_name="albums")
 
 class Song(models.Model):
     song_name = models.CharField(max_length=(255))
     song_year = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    albums = models.ForeignKey(Album, related_name="songs")
+    album = models.ForeignKey(Album, related_name="songs")
 
 
     

@@ -8,7 +8,7 @@
 </head>
 <body>
         <h1>EDIT ARTIST</h1>
-    <form action="{% url 'music_app:updateArtist' id=artist.id %}" method='POST'>
+    <form action="{% url 'music_app:updateArtist' artist_id=artist.id %}" method='POST'>
         {% csrf_token %}
         <label for='artist_name'>ARTIST NAME:</label>
         <input type='text' name='artist_name' value="{{artist.artist_name}}"><br>
