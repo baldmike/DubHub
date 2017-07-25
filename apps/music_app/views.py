@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from models import *
 
 def index(request):
@@ -20,11 +20,10 @@ def artist_create(request):
 def addArtist(request):
     return render(request, 'music_app/addArtist.html')
     
-    
 
-def artist_view(request, id):
+def artist_view(request, artist_id):
     context={
-        'artist': Artist.objects.get(id=id)
+        'artist': Artist.objects.get(id=artist_id)
     }
     return render(request, 'music_app/displayArtist.html', context)
 
@@ -49,9 +48,21 @@ def artist_delete(request, id):
 # ************************
 # ************************
 
+def addAlbum(request, artist_id):
+    context={
+        'artist': Artist.objects.get(id=artist_id)
+    }
+    return render(request, 'music_app/albumCreate.html', context)
+    
 
-def album_create(request):
-    return render(request, 'playlist_app/index.html')
+def album_create(request, id):
+    if request.method == 'POST':
+        artist= Artist.objects.get(id=id)
+        album_name= request.POST['album_name']
+        album_year= request.POST['album_year']
+        Album.objects.create(album_name= album_name, album_year= album_year, artists=artist)
+    
+    return redirect(reverse('music_app:viewArtist', kwargs={'artist_id': id}))
 
 def album_view(request):
     return render(request, 'playlist_app/index.html')

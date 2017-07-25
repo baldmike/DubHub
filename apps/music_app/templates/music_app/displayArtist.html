@@ -7,11 +7,33 @@
     <title>Document</title>
 </head>
 <body>
-        <h2>ARTIST NUMBER: {{ artist.id}}</h2>
+    <h2>ARTIST NUMBER: {{ artist.id}}</h2>
     <h3>ARTIST NAME: {{artist.artist_name}}</h3>   
     <h3> ARTIST BIO: {{ artist.artist_bio}}</h3>
     <h3>CREATED: {{artist.created_at}}</h3>
 
-    <a href="{% url 'music_app:editArtist' id=artist.id %}">Edit</a> | <a href="{% url 'music_app:deleteArtist' id=artist.id %}">Delete</a> | <a href="{% url 'music_app:index' %}">Home</a><br>
+    <a href="{% url 'music_app:editArtist' id=artist.id %}">Edit</a> | <a href="{% url 'music_app:deleteArtist' id=artist.id %}">Delete</a> | <a href="{% url 'music_app:index' %}">Home</a> | <a href="{% url 'music_app:addAlbum' artist_id=artist.id %}">Add Album</a><br>
+
+
+      
+<table >
+  <tr>
+    <th>id </th>
+    <th>ALBUM NAME </th> 
+    <th>NUMBER OF TRACKS</th> 
+    <th>YEAR</th>
+    <th>ACTIONS</th>
+  </tr>
+    {% for artist in artists %}
+    <tr>
+    <td>{{album.id}}</td>
+    <td>{{album.album_name}}</td>
+    <td>{{album.trackcount}}</td>
+    <td>{{album.year}}</td>
+    <td><a href="{% url 'music_app:viewArtist' id=artist.id %}">Show Album</a> | <a href="{% url 'music_app:editArtist' id=artist.id %}">Edit Album</a> | <a href="{% url 'music_app:deleteArtist' id=artist.id %}">Delete Album</a></td>
+    </tr>
+{% endfor %}
+</table>
+
 </body>
 </html>

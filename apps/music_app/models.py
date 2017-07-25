@@ -10,7 +10,6 @@ class Artist(models.Model):
 
 class Album(models.Model):
     album_name = models.CharField(max_length=255)
-    album_genre = models.CharField(max_length=255)
     album_year = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

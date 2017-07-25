@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>create album</h1>
+        <form action="{% url 'music_app:album_create' id=artist.id %}" method='POST'>
+        {% csrf_token %}
+        <h1>Artist Id:{{ artist.id }}</h1>
+        <label for='album_name'>ALBUM:</label>
+        <input type='text' name='album_name'><br>
+        <label for='album_year'>ALBUM YEAR:</label>
+        <input type='text' name='album_year'><br>
+        <input type='submit' value='Create Album'>
+    </form>
+
+    
+</body>
+</html>
