@@ -8,7 +8,7 @@ from models import *
 
 def index(request):
     if 'user_id' in request.session:
-        return redirect('user_app:home')
+        return redirect('music_app:index')
     else:
         return render(request, 'user_app/index.html')
 
@@ -35,7 +35,8 @@ def register(request):
             request.session['first_name'] = user.first_name
             request.session['last_name'] = user.last_name
             request.session['email'] = user.email
-            return redirect('user_app:home')
+            return redirect('music_app:index')
+        
 
 def login(request):
     try:
@@ -46,31 +47,14 @@ def login(request):
             request.session['first_name'] = user.first_name
             request.session['last_name'] = user.last_name
             request.session['email'] = user.email
-            return redirect('user_app:home')
+            return redirect('music_app:index')
         else:
             messages.add_message(request, messages.ERROR, "Invalid login info.")
             return redirect("/")
     except:
         messages.add_message(request, messages.ERROR, "Not in database")
         return redirect('user_app:login')
-def home(request):
-
-    context = {
-
-        "first_name": request.session['first_name'],
-        "last_name": request.session['last_name'],
-        "email": request.session['email'],
-
-    }
-    return render(request, 'user_app/home.html', context)
 
 def logout(request):
     request.session.flush()
     return redirect('user_app:index')
-
-def update_user(request):
-    return render(render, 'user_app/index.html')
-
-def delete_user(request):
-    return render(render, 'user_app/index.html')
-    
