@@ -28,7 +28,7 @@
     <td>{{album.id}}</td>
     <td>{{album.album_name}}</td>
     <td>{{album.album_year}}</td>
-    <td><a href="{% url 'music_app:viewAlbum' album_id=album.id %}">Show Album</a> | <a href="{% url 'music_app:updateAlbum' album_id=album.id %}">Edit Album</a> | <a href="{% url 'music_app:deleteAlbum' album_id=album.id %}">Delete Album</a></td>
+    <td><a href="{% url 'music_app:viewAlbum' album_id=album.id %}">Show Album</a> | <a href="{% url 'music_app:updateAlbum' album_id=album.id %}">Edit Album</a> | <a href="{% url 'music_app:deleteAlbum' album_id=album.id artist_id=artist.id %}">Delete Album</a></td>
     </tr>
     {% endfor %}
 </table>

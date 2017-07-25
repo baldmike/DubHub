@@ -71,10 +71,10 @@ def viewAlbum(request):
 def updateAlbum(request):
     return render(request, 'playlist_app/index.html')
 
-def deleteAlbum(request, album_id):
+def deleteAlbum(request, album_id, artist_id):
     album = Album.objects.get(id=album_id)
     album.delete()
-    return redirect ('music_app:index')
+    return redirect(reverse('music_app:viewArtist', kwargs={'artist_id': artist_id}))
 
 
 # ************************
