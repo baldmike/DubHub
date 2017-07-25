@@ -10,7 +10,7 @@ def index(request):
     }
     return render(request, 'music_app/index.html', context)
 
-def artist_create(request):
+def createArtist(request):
     if request.method == 'POST':
         artist_name= request.POST['artist_name']
         artist_bio= request.POST['artist_bio']
@@ -21,26 +21,26 @@ def addArtist(request):
     return render(request, 'music_app/addArtist.html')
     
 
-def artist_view(request, artist_id):
+def viewArtist(request, artist_id):
     context={
         'artist': Artist.objects.get(id=artist_id)
     }
     return render(request, 'music_app/displayArtist.html', context)
 
-def artist_edit(request, id):
+def editArtist(request, id):
     context={
         'artist': Artist.objects.get(id=id)
     }
     return render(request, 'music_app/editArtist.html', context)
 
-def artist_update(request, id):
+def updateArtist(request, id):
     artist = Artist.objects.get(id=id)
     artist.artist_name= request.POST['artist_name']
     artist.artist_bio= request.POST['artist_bio']
     artist.save()
     return redirect('music_app:index')
 
-def artist_delete(request, id):
+def deleteArtist(request, id):
     artist = Artist.objects.get(id=id)
     artist.delete()
     return redirect('music_app:index')
@@ -55,7 +55,7 @@ def addAlbum(request, artist_id):
     return render(request, 'music_app/albumCreate.html', context)
     
 
-def album_create(request, id):
+def createAlbum(request, id):
     if request.method == 'POST':
         artist= Artist.objects.get(id=id)
         album_name= request.POST['album_name']
@@ -64,29 +64,29 @@ def album_create(request, id):
     
     return redirect(reverse('music_app:viewArtist', kwargs={'artist_id': id}))
 
-def album_view(request):
+def viewAlbum(request):
     return render(request, 'playlist_app/index.html')
 
-def album_update(request):
+def updateAlbum(request):
     return render(request, 'playlist_app/index.html')
 
-def album_delete(request):
+def deleteAlbum(request):
     return render(request, 'playlist_app/index.html')
 
 
 # ************************
 
 
-def song_create(request):
+def createSong(request):
     return render(request, 'playlist_app/index.html')
 
-def song_view(request):
+def viewSong(request):
     return render(request, 'playlist_app/index.html')
 
-def song_update(request):
+def updateSong(request):
     return render(request, 'playlist_app/index.html')
 
-def song_delete(request):
+def deleteSong(request):
     return render(request, 'playlist_app/index.html')
 
 # ************************
@@ -95,5 +95,5 @@ def song_delete(request):
 def search(request):
     return render(request, 'playlist_app/index.html')
 
-def new_release(request):
+def newRelease(request):
     return render(request, 'playlist_app/index.html')
