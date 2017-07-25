@@ -7,8 +7,10 @@ from django.core.urlresolvers import reverse
 from models import *
 
 def index(request):
-    
-    return render(request, 'user_app/index.html')
+    if 'user_id' in request.session:
+        return redirect('/success')
+    else:
+        return render(request, 'user_app/index.html')
 
 def register(request):
 
@@ -29,10 +31,10 @@ def register(request):
             messages.add_message(request, messages.ERROR, "User email already exists.")
             return redirect("/")
         else:
-            request.session['first_name'] = first_name
-            request.session['last_name'] = last_name
-            request.session['email'] = email
-            request.session['password'] = hashed_password
+            request.session['user_id'] = user.id
+            request.session['first_name'] = user.first_name
+            request.session['last_name'] = user.last_name
+            request.session['email'] = user.email
             return redirect('/success')
 
 def login(request):
@@ -40,10 +42,10 @@ def login(request):
         user = User.objects.login_validator(request.POST)
 
         if user:
+            request.session['user_id'] = user.id
             request.session['first_name'] = user.first_name
             request.session['last_name'] = user.last_name
             request.session['email'] = user.email
-            request.session['password'] = user.password
             return redirect('/success')
         else:
             messages.add_message(request, messages.ERROR, "Invalid login info.")
@@ -58,7 +60,6 @@ def success(request):
         "first_name": request.session['first_name'],
         "last_name": request.session['last_name'],
         "email": request.session['email'],
-        "password": request.session['password'],
 
     }
     return render(request, 'user_app/success.html', context)
