@@ -14,7 +14,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="jumbotron">
+                <div class="jumbotron main">
                     <h1>Sportify</h1>
                 </div>
                 {% for message in messages %}
@@ -24,7 +24,7 @@
         </div>
         <div class="row">
             <div class="col-md-6 login">
-                <form action="/login" method="post">
+                <form action="{% url 'user_app:login' %}" method="post">
                     {% csrf_token %}
                     <h1 class="header">login</h1>
                     <div class="form-group">

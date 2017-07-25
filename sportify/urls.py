@@ -3,9 +3,8 @@ from django.contrib import admin
 
 urlpatterns = [
 
-    url(r'^admin/', admin.site.urls),
-    url(r'^', include('apps.user_app.urls')),
-    url(r'^', include('apps.music_app.urls')),
+    url(r'^', include('apps.user_app.urls', namespace='user_app')),
+    url(r'^music/', include('apps.music_app.urls', namespace='music_app')),
 
 ]
 

@@ -15,7 +15,7 @@ def artist_create(request):
         artist_name= request.POST['artist_name']
         artist_bio= request.POST['artist_bio']
         Artist.objects.create(artist_name=artist_name, artist_bio=artist_bio)
-    return redirect('/')
+    return redirect('music_app:index')
 
 def addArtist(request):
     return render(request, 'music_app/addArtist.html')
@@ -39,12 +39,12 @@ def artist_update(request, id):
     artist.artist_name= request.POST['artist_name']
     artist.artist_bio= request.POST['artist_bio']
     artist.save()
-    return redirect('/')
+    return redirect('music_app:index')
 
 def artist_delete(request, id):
     artist = Artist.objects.get(id=id)
     artist.delete()
-    return redirect('/')
+    return redirect('music_app:index')
 
 # ************************
 # ************************

@@ -12,6 +12,6 @@
     <h3> ARTIST BIO: {{ artist.artist_bio}}</h3>
     <h3>CREATED: {{artist.created_at}}</h3>
 
-    <a href='/{{artist.id}}/editArtist'>Edit</a> | <a href='/{{artist.id}}/artist_delete'>Delete</a> | <a href="/">Home</a><br>
+    <a href="{% url 'music_app:editArtist' id=artist.id %}">Edit</a> | <a href="{% url 'music_app:deleteArtist' id=artist.id %}">Delete</a> | <a href="{% url 'music_app:index' %}">Home</a><br>
 </body>
 </html>

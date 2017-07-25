@@ -21,10 +21,14 @@
            </div>
         </div>
         <div class="row">
-            <form action="/reset">
-                <input type="submit" name="reset" value="Logout {{first_name}}" id="reset">
+            <form action="/logout">
+                <input type="submit" name="logout" value="Logout {{first_name}}" class="action_button">
             </form>
         </div>
+        <div class="row">
+            <form action="{% url 'music_app:addArtist' %}">
+                <input type="submit" name="addArtist" value="Add Artist" class="action_button">
+            </form>
         <div class="row">
             <div col-md-12>
                 <h1 class="footer">&copyCopyright 2017 | Sportify Changos</h1>

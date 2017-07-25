@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>HELLO WORLD</h1>
+    <h1>INDEX</h1>
    
 <table >
   <tr>
@@ -25,11 +25,11 @@
     <td>{{artist.artist_name}}</td>
     <td>{{artist.artist_bio}}</td>
     <td>{{artist.created_at}}</td>
-    <td><a href='/{{artist.id}}/artist_view'>Show</a> | <a href='/{{artist.id}}/editArtist'>Edit</a> | <a href='{{artist.id}}/artist_delete'>Delete</a></td>
+    <td><a href="{% url 'music_app:viewArtist' id=artist.id %}">Show</a> | <a href="{% url 'music_app:editArtist' id=artist.id %}">Edit</a> | <a href="{% url 'music_app:deleteArtist' id=artist.id %}">Delete</a></td>
     </tr>
 {% endfor %}
 </table>
-   <a href="/addArtist">ADD A NEW ARTIST</a>
+   <a href="{% url 'music_app:addArtist' %}">ADD A NEW ARTIST</a>
 
 
 </body>

@@ -8,7 +8,7 @@ from models import *
 
 def index(request):
     if 'user_id' in request.session:
-        return redirect('/success')
+        return redirect('user_app:home')
     else:
         return render(request, 'user_app/index.html')
 
@@ -18,7 +18,7 @@ def register(request):
     if len(errors):
         for tag, error in errors.iteritems():
             messages.add_message(request, messages.ERROR, errors[tag])
-        return redirect("/")
+        return redirect('user_app:login')
     else:
         first_name =  request.POST['first_name']
         last_name = request.POST['last_name']
@@ -29,13 +29,13 @@ def register(request):
 
         if not user:
             messages.add_message(request, messages.ERROR, "User email already exists.")
-            return redirect("/")
+            return redirect('user_app:login')
         else:
             request.session['user_id'] = user.id
             request.session['first_name'] = user.first_name
             request.session['last_name'] = user.last_name
             request.session['email'] = user.email
-            return redirect('/success')
+            return redirect('user_app:home')
 
 def login(request):
     try:
@@ -46,14 +46,14 @@ def login(request):
             request.session['first_name'] = user.first_name
             request.session['last_name'] = user.last_name
             request.session['email'] = user.email
-            return redirect('/success')
+            return redirect('user_app:home')
         else:
             messages.add_message(request, messages.ERROR, "Invalid login info.")
             return redirect("/")
     except:
         messages.add_message(request, messages.ERROR, "Not in database")
-        return redirect('/')
-def success(request):
+        return redirect('user_app:login')
+def home(request):
 
     context = {
 
@@ -62,11 +62,11 @@ def success(request):
         "email": request.session['email'],
 
     }
-    return render(request, 'user_app/success.html', context)
+    return render(request, 'user_app/home.html', context)
 
-def reset(request):
+def logout(request):
     request.session.flush()
-    return redirect('/')
+    return redirect('user_app:index')
 
 def update_user(request):
     return render(render, 'user_app/index.html')
