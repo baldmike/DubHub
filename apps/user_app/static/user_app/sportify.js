@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.jumbotron').slideDown(5000);
+    $('.jumbotron').slideDown(3000);
 console.log('NOW READY')
  
 
