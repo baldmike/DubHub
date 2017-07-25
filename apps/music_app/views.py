@@ -28,7 +28,7 @@ def artist_view(request, id):
     }
     return render(request, 'music_app/displayArtist.html', context)
 
-def editArtist(request, id):
+def artist_edit(request, id):
     context={
         'artist': Artist.objects.get(id=id)
     }
