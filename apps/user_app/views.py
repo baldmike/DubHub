@@ -14,7 +14,7 @@ def login(request):
 
 def register(request):
     return render(render, 'user_app/index.html')
-
+    
 def update_user(request):
     return render(render, 'user_app/index.html')
 

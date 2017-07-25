@@ -2,8 +2,6 @@ from __future__ import unicode_literals
  
 from django.db import models
 
-import re
-import bcrypt
 
 from ..music_app.models import Song
 from ..user_app.models import User
