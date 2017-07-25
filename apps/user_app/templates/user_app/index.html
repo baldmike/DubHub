@@ -5,26 +5,65 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'user_app/css/styles.css' %}" media="screen" title="session words" charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'user_app/css/styles.css' %}" media="screen" title="Login/Registration" charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="user_app.js"></script>
+    <script src="{% static 'user_app/sportify.js' %}"></script>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="jumbotron">
-                    <h1 class="header">Hello World.</h1>
+                    <h1>Sportify</h1>
                 </div>
+                {% for message in messages %}
+                <h2>{{message}}</h2>
+                {% endfor %}
            </div>
-       </div>
+        </div>
         <div class="row">
-            <div class="col-md-6 left box">
-                <h1>LEFT SIDE.</h1>
+            <div class="col-md-6 login">
+                <form action="/login" method="post">
+                    {% csrf_token %}
+                    <h1 class="header">login</h1>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" id="password" aria-describedby="emailHelp" placeholder="Enter Password">
+                    </div>
+                    <button type="submit" name="login" class="btn btn-primary">login</button>
+                </form>
             </div>
-            <div class="col-md-6 right box">
-                <h1>RIGHT SIDE.</h1>
+            <div class="col-md-6">
+                <form action="/register" method="post">
+                    {% csrf_token %}
+                    <h2 class="header">register</h2>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="Password" id="password" aria-describedby="emailHelp" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="conf_password" id="conf_password" aria-describedby="emailHelp" placeholder="Confirm Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">register</button>
+                </form>
             </div>
         </div>
+        <div class="row">
+            <div col-md-12>
+                <h1 class="footer">&copyCopyright 2017 | The Sportify Changos</h1>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
