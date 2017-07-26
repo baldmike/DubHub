@@ -42,8 +42,8 @@
     <td>{{song.id}}</td>
     <td>{{song.song_name}}</td>
     <td>{{song.song_year}}</td>
-     <td><a href="{% url 'music_app:viewSong' artist_id=artist.id album_id=album.id  %}">Show Song</a> |
-         <a href="{% url 'music_app:viewSong' artist_id=artist.id album_id=album.id  %}">Delete Song</a> | 
+     <td><a href="{% url 'music_app:addSong' artist_id=artist.id album_id=album.id  %}">Show Song</a> |
+         <a href="{% url 'music_app:addSong' artist_id=artist.id album_id=album.id  %}">Delete Song</a> | 
     </tr>
     {% endfor %}
 

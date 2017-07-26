@@ -18,13 +18,11 @@
                     <form action="/logout">
                         <input type="submit" name="logout" value="Logout {{request.session.first_name}}" class="action_button">
                     </form>
-                    <h1>{{artist.artist_name}}</h1>
-                    <h4>{{artist.artist_bio}}</h4>
+                    <h1>{{playlist.playlist_name}}</h1>
                     <br>
                     <div class="row">
                         <div class="md-col-6">
                         <a href="{% url 'music_app:index' %}">HOME</a> |
-                        <a href="{% url 'music_app:addAlbum' artist_id=artist.id %}">ADD ALBUM</a> |
                         </div>
                     </div>
                 </div>
@@ -37,8 +35,7 @@
             <table class="table table-hover box">
                 <thead>
                     <tr>
-                    <th>ALBUM NAME </th>  
-                    <th>YEAR</th>
+                    <th>SONG </th>  
                     <th>ACTIONS</th>
                     </tr>
                     {% for album in albums %}
@@ -46,7 +43,6 @@
                 <tbody>
                     <tr>
                     <td><a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">{{album.album_name}}</a></td>
-                    <td>{{album.album_year}}</td>
                     <td>
                         <a href="{% url 'music_app:deleteAlbum' album_id=album.id artist_id=artist.id %}">Delete Album</a> |
                         <a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">Add Song</a>

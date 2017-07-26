@@ -3,10 +3,12 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect, reverse
 from models import *
+from ..playlist_app.models import Playlist
 
 def index(request):
     context={
-        'artists': Artist.objects.all()
+        'artists': Artist.objects.all(),
+        'playlists': Playlist.objects.all()
     }
     return render(request, 'music_app/index.html', context)
 
@@ -77,16 +79,14 @@ def deleteAlbum(request, album_id, artist_id):
     album = Album.objects.get(id=album_id)
     album.delete()
     return redirect(reverse('music_app:viewArtist', kwargs={'artist_id': artist_id}))
-# ************************
-def viewSong(request, album_id, artist_id):
+
+def addSong(request, album_id, artist_id):
     context={
         'artist': Artist.objects.get(id=artist_id),
         'album': Album.objects.get(id=album_id),
         'songs': Song.objects.filter(album_id=album_id)        
     }
     return render(request, 'music_app/songs.html', context)
-
-
 
 def createSong(request, album_id, artist_id):    
     if request.method == 'POST':
@@ -96,7 +96,7 @@ def createSong(request, album_id, artist_id):
         song_year= request.POST['song_year']
         Song.objects.create(song_name= song_name, song_year= song_year, album_id=album_id)
 
-    return redirect(reverse('music_app:viewSong', kwargs={'artist_id': artist_id, 'album_id':album_id}))
+    return redirect(reverse('music_app:addSong', kwargs={'artist_id': artist_id, 'album_id':album_id}))
 
 def updateSong(request):
     return render(request, 'playlist_app/index.html')

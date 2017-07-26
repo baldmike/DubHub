@@ -7,11 +7,10 @@ from ..music_app.models import Song
 from ..user_app.models import User
 
 class Playlist(models.Model):
-    title = models.CharField(max_length=255)
+    playlist_name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, related_name='playlists')
-
 
 class Review(models.Model):
     review = models.TextField(max_length=1000)
