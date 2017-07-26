@@ -24,7 +24,7 @@ def addArtist(request):
 def viewArtist(request, artist_id):
     context={
         'artist': Artist.objects.get(id=artist_id),
-        'albums': Album.objects.filter(artist_id=artist_id)
+        'albums': Album.objects.filter(artist_id=artist_id),
     }
     return render(request, 'music_app/displayArtist.html', context)
 
@@ -50,8 +50,10 @@ def deleteArtist(request, artist_id):
 # ************************
 
 def addAlbum(request, artist_id):
+    
     context={
-        'artist': Artist.objects.get(id=artist_id)
+        'artist': Artist.objects.get(id=artist_id),
+        'albums': Album.objects.filter(artist_id=artist_id)
     }
     return render(request, 'music_app/albumCreate.html', context)
     
@@ -75,22 +77,35 @@ def deleteAlbum(request, album_id, artist_id):
     album = Album.objects.get(id=album_id)
     album.delete()
     return redirect(reverse('music_app:viewArtist', kwargs={'artist_id': artist_id}))
-
-
 # ************************
+def viewSong(request, album_id, artist_id):
+    context={
+        'artist': Artist.objects.get(id=artist_id),
+        'album': Album.objects.get(id=album_id),
+        'songs': Song.objects.filter(album_id=album_id)        
+    }
+    return render(request, 'music_app/songs.html', context)
 
 
-def createSong(request):
-    return render(request, 'playlist_app/index.html')
 
-def viewSong(request):
-    return render(request, 'playlist_app/index.html')
+def createSong(request, album_id, artist_id):    
+    if request.method == 'POST':
+        album= Album.objects.get(id=album_id)
+        artist= Artist.objects.get(id=artist_id)
+        song_name= request.POST['song_name']
+        song_year= request.POST['song_year']
+        Song.objects.create(song_name= song_name, song_year= song_year, album_id=album_id)
+
+    return redirect(reverse('music_app:viewSong', kwargs={'artist_id': artist_id, 'album_id':album_id}))
 
 def updateSong(request):
     return render(request, 'playlist_app/index.html')
 
-def deleteSong(request):
-    return render(request, 'playlist_app/index.html')
+
+# def deleteSong(request, album_id, artist_id, song_id):
+#     song = Song.objects.get(id=song_id)
+#     song.delete()
+#     return redirect(reverse('music_app:viewSong', kwargs={'artist_id': artist_id, 'album_id':album_id, 'song_id':song_id}))
 
 # ************************
 
