@@ -23,6 +23,7 @@
                     <div class="row">
                         <div class="md-col-6">
                         <a href="{% url 'music_app:index' %}">HOME</a> |
+                        <a href="{% url 'music_app:allSongs' playlist_id=playlist.id %}">ADD SONG</a> |
                         </div>
                     </div>
                 </div>
@@ -38,11 +39,11 @@
                     <th>SONG </th>  
                     <th>ACTIONS</th>
                     </tr>
-                    {% for album in albums %}
+                    {% for song in songs %}
                 </thead>
                 <tbody>
                     <tr>
-                    <td><a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">{{album.album_name}}</a></td>
+                    <td><a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">{{song.song_name}}</a></td>
                     <td>
                         <a href="{% url 'music_app:deleteAlbum' album_id=album.id artist_id=artist.id %}">Delete Album</a> |
                         <a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">Add Song</a>

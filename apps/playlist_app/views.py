@@ -15,13 +15,20 @@ def createPlaylist(request):
         user_id = request.session['user_id']
         playlist_name = request.POST['playlist_name']
         Playlist.objects.create(playlist_name=playlist_name, user_id=user_id)
-        # playlist_id = Playlist.objects.get(id=playlist_id)
+        playlist_id = Playlist.objects.get(id=playlist_id)
 
     return redirect('music_app:index')
     
-def viewPlaylist(request):
-    return render(request, 'playlist_app/viewPlaylist.html')
+def viewPlaylist(request, playlist_id):
+    context={
+        'playlist': Playlist.objects.get(id=playlist_id),
+    }
+    return render(request, 'playlist_app/viewPlaylist.html', context)
 
+def addToPlaylist(request, song_id):
+    playlistSong= Song.objects.get(id=song_id)
+
+    return render(request, 'playlist_app/viewPlaylist.html')
 
 
 

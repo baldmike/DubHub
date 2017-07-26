@@ -101,6 +101,13 @@ def createSong(request, album_id, artist_id):
 def updateSong(request):
     return render(request, 'playlist_app/index.html')
 
+def allSongs(request, playlist_id):
+    song= Song.objects.all()
+    context={
+        'songs': song
+    }
+    return render(request, 'music_app/allSongs.html', context)
+
 
 # def deleteSong(request, album_id, artist_id, song_id):
 #     song = Song.objects.get(id=song_id)

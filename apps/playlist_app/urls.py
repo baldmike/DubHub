@@ -5,14 +5,9 @@ urlpatterns = [
 
     url(r'^addPlaylist$', views.addPlaylist, name='addPlaylist'),
     url(r'^createPlaylist$', views.createPlaylist, name='createPlaylist'),
-    url(r'^viewPlaylist$', views.viewPlaylist, name='viewPlaylist'),
-
-
-
-
-    url(r'^playlist_update$', views.playlist_update),
+    url(r'^(?P<playlist_id>\d+)/viewPlaylist$', views.viewPlaylist, name='viewPlaylist'),
+    url(r'^(?P<song_id>\d+)/addToPlaylist$', views.addToPlaylist, name='addToPlaylist'),
     url(r'^playlist_delete$', views.playlist_delete),
-
 ]
 
 

@@ -56,7 +56,7 @@
                         {% for playlist in playlists %}
                         {% if playlist.user_id == request.session.user_id %}
                         <tr>
-                            <td><a href="{% url 'playlist_app:viewPlaylist' %}">{{playlist.playlist_name}}</a></td>
+                            <td><a href="{% url 'playlist_app:viewPlaylist' playlist_id=playlist.id %}">{{playlist.playlist_name}}</a></td>
                         </tr>
                         {% endif %}
                         {% endfor %}
