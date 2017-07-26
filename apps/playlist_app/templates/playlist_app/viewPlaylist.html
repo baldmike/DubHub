@@ -36,21 +36,16 @@
             <table class="table table-hover box">
                 <thead>
                     <tr>
-                    <th>SONG </th>  
-                    <th>ACTIONS</th>
+                        <th>SONG </th>  
                     </tr>
-                    {% for song in songs %}
                 </thead>
                 <tbody>
+                    {% for addition in additions %}
                     <tr>
-                    <td><a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">{{song.song_name}}</a></td>
-                    <td>
-                        <a href="{% url 'music_app:deleteAlbum' album_id=album.id artist_id=artist.id %}">Delete Album</a> |
-                        <a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">Add Song</a>
-                    </td>
+                        <td>{{addition.song.song_name}}</td>
                     </tr>
-                </tbody>
                     {% endfor %}
+                </tbody>
             </table>
 </body>
 </html>

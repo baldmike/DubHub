@@ -22,13 +22,15 @@ def createPlaylist(request):
 def viewPlaylist(request, playlist_id):
     context={
         'playlist': Playlist.objects.get(id=playlist_id),
+        'additions': Addition.objects.filter(playlist_id=playlist_id)
     }
     return render(request, 'playlist_app/viewPlaylist.html', context)
 
-def addToPlaylist(request, song_id):
-    playlistSong= Song.objects.get(id=song_id)
-
-    return render(request, 'playlist_app/viewPlaylist.html')
+def addToPlaylist(request, song_id, playlist_id):    
+    playlist= Playlist.objects.get(id=playlist_id)
+    song= Song.objects.get(id=song_id)
+    Addition.objects.create(playlist=playlist, song=song)
+    return redirect(reverse('playlist_app:viewPlaylist', kwargs={ 'playlist_id':playlist_id}))
 
 
 

@@ -9,7 +9,7 @@
 <body>
     <h1>ALL SONGS</h1>
     {% for song in songs %}
-    <h3><a href="{% url 'playlist_app:addToPlaylist' song_id=song.id %}">{{song.song_name}}</a></h3>
+    <h3><a href="{% url 'playlist_app:addToPlaylist' song_id=song.id playlist_id=playlist_id %}">{{song.song_name}}</a></h3>
     {% endfor %}
 
 </body>

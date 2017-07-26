@@ -104,7 +104,8 @@ def updateSong(request):
 def allSongs(request, playlist_id):
     song= Song.objects.all()
     context={
-        'songs': song
+        'songs': song,
+        'playlist_id': playlist_id
     }
     return render(request, 'music_app/allSongs.html', context)
 
