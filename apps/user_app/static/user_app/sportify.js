@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.main').slideDown(2000);
+    $('.main').slideDown(750);
 console.log('NOW READY')
  
 });
