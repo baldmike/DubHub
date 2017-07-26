@@ -53,7 +53,7 @@ def login(request):
             return redirect("/")
     except:
         messages.add_message(request, messages.ERROR, "Not in database")
-        return redirect('user_app:login')
+        return redirect('/')
 
 def logout(request):
     request.session.flush()
