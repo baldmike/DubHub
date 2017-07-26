@@ -1,5 +1,5 @@
 $(document).ready(function() {
     $('.main').slideDown(2000);
-console.log('NOW READY')
+console.log('MUSIC APP NOW READY')
  
 });

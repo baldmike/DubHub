@@ -2,43 +2,47 @@
     margin: 0px;
     padding: 0px;
     font-family: sans-serif;
-    text-align: center;
     font-family: 'Roboto', sans-serif;
     
 }
 
+.container {
+    background-color: black;
+    background-image: url("{% static 'user_app/record.png' %}")
+}
+
 .main {
-    display: none
+    display: none; 
 }
 
 .jumbotron {
     margin-top: 20px;
     border: 2px solid black;
     color: white;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(white));
+    background-color: black;
+    /* background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(white));
     background-image: -webkit-linear-gradient(top, black, white);
     background-image: -moz-linear-gradient(top, black, white);
-    background-image: linear-gradient(to bottom, black, white);
+    background-image: linear-gradient(to bottom, black, white); */
 }
 .box {
-    border: 2px solid black;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(white));
-    background-image: -webkit-linear-gradient(top, black, white);
-    background-image: -moz-linear-gradient(top, black, white);
-    background-image: linear-gradient(to bottom, black, white);
+    /* border: 2px solid black; */
+    overflow: scroll;
+    bottom: 40px;
 }
 
 .action_button {
-    margin-top: 10px;
+    float: right;
     font-size: 1.4em;
-    width: 100%;
+    width: 10%;
     border: 2px solid black;
     border-radius: 5px;
-    color: white;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(white));
+    background-color: white;
+    color: black;
+    /* background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(white));
     background-image: -webkit-linear-gradient(top, black, white);
     background-image: -moz-linear-gradient(top, black, white);
-    background-image: linear-gradient(to bottom, black, white);
+    background-image: linear-gradient(to bottom, black, white); */
 }
 
 .header {
@@ -56,8 +60,14 @@
 }
 
 .footer {
-    font-size: 1.2em;
     position: fixed;
+    bottom: 0;
+    text-align: center;
+    font-size: 1.2em;
     bottom: 0%;
     width: 100%;
+}
+
+.center {
+    text-align: center;
 }

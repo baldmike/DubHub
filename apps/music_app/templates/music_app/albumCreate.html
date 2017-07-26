@@ -1,23 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'user_app/css/styles.css' %}" media="screen" title="Login/Registration" charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="{% static 'user_app/sportify.js' %}"></script>
 </head>
 <body>
-<h1>create album</h1>
-        <form action="{% url 'music_app:createAlbum' artist_id=artist.id %}" method='POST'>
-        {% csrf_token %}
-        <h1>Artist Id:{{ artist.id }}</h1>
-        <label for='album_name'>ALBUM:</label>
-        <input type='text' name='album_name'><br>
-        <label for='album_year'>ALBUM YEAR:</label>
-        <input type='text' name='album_year'><br>
-        <input type='submit' value='Create Album'>
-    </form>
-
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron main">
+                    <form action="/logout">
+                        <input type="submit" name="logout" value="Logout {{request.session.first_name}}" class="action_button">
+                    </form>
+                    <h1>drop an album</h1>
+                </div>
+                <div>
+                    <form action="{% url 'music_app:createAlbum' artist_id=artist.id %}" method='POST'>
+                    {% csrf_token %}
+                        <h1>{{ artist.artist_name }}</h1>
+                    <input type='text' class="form-control" name='album_name' placeholder="Album name" autofocus><br>
+                    <input type='text' class="form-control" name='album_year' placeholder="Release year"><br>
+                    <input type='submit' class="btn btn-primary" value='drop it'>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-md-6">
     
 </body>
 </html>

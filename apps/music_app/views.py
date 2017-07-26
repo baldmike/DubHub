@@ -58,7 +58,7 @@ def addAlbum(request, artist_id):
 
 def createAlbum(request, artist_id):
     if request.method == 'POST':
-        artist= Artist.objects.get(id=artist_id)
+        artist= Artist.objects.filter(id=artist_id).order_by('artist_name')
         album_name= request.POST['album_name']
         album_year= request.POST['album_year']
         Album.objects.create(album_name= album_name, album_year= album_year, artist_id=artist_id)
