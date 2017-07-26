@@ -15,10 +15,10 @@ urlpatterns = [
     url(r'^(?P<album_id>\d+)/viewAlbum$', views.viewAlbum, name='viewAlbum'),
     url(r'^(?P<album_id>\d+)/updateAlbum$', views.updateAlbum, name='updateAlbum'),
     url(r'^(?P<album_id>\d+)/(?P<artist_id>\d+)/deleteAlbum$', views.deleteAlbum, name='deleteAlbum'),
-    url(r'^createSong$', views.createSong, name='createSong'),
-    url(r'^viewSong$', views.viewSong, name='viewSong'),
+    url(r'^(?P<album_id>\d+)/(?P<artist_id>\d+)/viewSong$', views.viewSong, name='viewSong'),    
+    url(r'^(?P<album_id>\d+)/(?P<artist_id>\d+)/createSong$', views.createSong, name='createSong'),
     url(r'^updateSong$', views.updateSong, name='updateSong'),
-    url(r'^deleteSong$', views.deleteSong, name='deleteSong'),
+    # url(r'^deleteSong$', views.deleteSong, name='deleteSong'),
     url(r'^search$', views.search, name='search'),
     
 ]

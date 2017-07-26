@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name='viewport' content="width=device-width initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'music_app/css/styles.css' %}" media="screen" title="Album Songs" charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <h1 class="header">Songs</h1>
+                </div>
+           </div>
+       </div>
+        <div class="row">
+            <h1>create Songs</h1>
+        <form action="{% url 'music_app:createSong' album_id=album.id artist_id=artist.id %}" method='POST'>
+        {% csrf_token %}
+
+        <h1>Artist:{{ artist.artist_name }}</h1>
+        <h1>Album:{{ album.album_name }}</h1>
+        <label for='song_name'>SONG:</label>
+        <input type='text' name='song_name'><br>
+        <label for='song_year'>SONG YEAR:</label>
+        <input type='text' name='song_year'><br>
+        <input type='submit' value='Create Song'>
+    </form>
+        <table >
+  <tr>
+    <th>id </th>
+    <th>SONG NAME </th>  
+    <th>YEAR</th>
+    <th>ACTIONS</th>
+  </tr>
+    {% for song in songs %}
+    <tr>
+    <td>{{song.id}}</td>
+    <td>{{song.song_name}}</td>
+    <td>{{song.song_year}}</td>
+     <td><a href="{% url 'music_app:viewSong' artist_id=artist.id album_id=album.id  %}">Show Song</a> |
+         <a href="{% url 'music_app:viewSong' artist_id=artist.id album_id=album.id  %}">Delete Song</a> | 
+    </tr>
+    {% endfor %}
+
+</table>
+    <a href="/viewArtist">Go HOME</a>
+</div>
+</body>
+</html>
