@@ -7,7 +7,8 @@ urlpatterns = [
     url(r'^createPlaylist$', views.createPlaylist, name='createPlaylist'),
     url(r'^(?P<playlist_id>\d+)/viewPlaylist$', views.viewPlaylist, name='viewPlaylist'),
     url(r'^(?P<song_id>\d+)/addToPlaylist/(?P<playlist_id>\d+)$', views.addToPlaylist, name='addToPlaylist'),
-    url(r'^playlist_delete$', views.playlist_delete),
+    url(r'^(?P<playlist_id>\d+)/deletePlaylist$', views.deletePlaylist, name="deletePlaylist"),
+    
 ]       
 
 

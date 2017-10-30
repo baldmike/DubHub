@@ -13,27 +13,34 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron main">
+            <div class="col-md-4">
+                <div class="jumbotron floatright main">
                     <form action="/logout">
                         <input type="submit" name="logout" value="Logout {{request.session.first_name}}" class="action_button">
                     </form>
+                    <div class="row">
                     <h1>drop an album</h1>
-                </div>
-                <div>
-                    <form action="{% url 'music_app:createAlbum' artist_id=artist.id %}" method='POST'>
-                    {% csrf_token %}
-                        <h1>{{ artist.artist_name }}</h1>
-                    <input type='text' class="form-control" name='album_name' placeholder="Album name" autofocus><br>
-                    <input type='text' class="form-control" name='album_year' placeholder="Release year"><br>
-                    <input type='submit' class="btn btn-primary" value='drop it'>
-                    </form>
+                    <h2 class="right">by {{ artist.artist_name }}</h2>
+                    </div>
+                    <div class="row">
+                        <div class="md-col-6">
+                        <a href="{% url 'music_app:index' %}">HOME</a> |
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-4 floatright main">
+                <form action="{% url 'music_app:createAlbum' artist_id=artist.id %}" method='POST'>
+                    {% csrf_token %}
+                    <input type='text' class="form-control" name='album_name' placeholder="Album name" autofocus><br>
+                    <input type='text' class="form-control" name='album_year' placeholder="Release year"><br>
+                    <input type='submit' class="btn btn-primary" value='drop it'>
+                </form>
+            </div>
+        </div>
+    
     
 </body>
 </html>

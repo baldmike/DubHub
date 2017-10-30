@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="jumbotron main">
-                    <h1>Sportify</h1>
+                    <h1>DubHub</h1>
                 </div>
                 {% for message in messages %}
                 <h2>{{message}}</h2>
@@ -23,45 +23,43 @@
            </div>
         </div>
         <div class="row">
-            <div class="col-md-6 login">
+            <div class="col-md-4 floatright">
                 <form action="{% url 'user_app:login' %}" method="post">
                     {% csrf_token %}
                     <h1 class="header">login</h1>
-                    <div class="form-group">
+                    <div class="form-group login">
                         <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email" autofocus>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group login">
                         <input type="password" class="form-control" name="password" id="password" aria-describedby="emailHelp" placeholder="Enter Password">
                     </div>
-                    <button type="submit" name="login" class="btn btn-primary">login</button>
+                    <button type="submit" name="login" class="btn btn-primary floatright login loginbtn">login</button>
                 </form>
-            </div>
-            <div class="col-md-6">
                 <form action="/register" method="post">
                     {% csrf_token %}
-                    <h2 class="header">register</h2>
-                    <div class="form-group">
+                    <h1 class="header">register</h1>
+                    <div class="form-group login">
                         <input type="text" class="form-control" name="first_name" id="first_name" placeholder="First Name">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group login">
                         <input type="text" class="form-control" name="last_name" id="last_name" placeholder="Last Name">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group login">
                         <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group login">
                         <input type="password" class="form-control" name="password" id="password" aria-describedby="emailHelp" placeholder="Password">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group login">
                         <input type="password" class="form-control" name="conf_password" id="conf_password" aria-describedby="emailHelp" placeholder="Confirm Password">
                     </div>
-                    <button type="submit" class="btn btn-primary">register</button>
+                    <button type="submit" class="btn btn-primary floatright login loginbtn">register</button>
                 </form>
             </div>
         </div>
         <div class="row">
             <div col-md-12>
-                <h1 class="footer">&copyCopyright 2017 | The Sportify Changos</h1>
+                <h1 class="footer">&copyCopyright 2017 | The Chango Brothers</h1>
             </div>
         </div>
     </div>

@@ -3,60 +3,82 @@
     padding: 0px;
     font-family: sans-serif;
     font-family: 'Roboto', sans-serif;
-    
+    color: white;
 }
 
-.container {
+.container-fluid {
+    background-image: url("record.png");
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
     background-color: black;
-    background-image: url("{% static 'user_app/record.png' %}")
+}
+
+.login {
+    display: none;
+}
+
+.bio {
+    color: white;
+    margin-top: 20px;
+    font-size: 22px;
+}
+
+.title {
+    font-size: 20px;
+    text-align: right;
+    margin-right: 80px;
 }
 
 .main {
+    float: right;
     display: none; 
-}
+    height: 200px;
+    background-color: black;
+} 
 
-.jumbotron {
-    margin-top: 20px;
+ .jumbotron {
     border: 2px solid black;
     color: white;
-    background-color: black;
-    /* background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(white));
-    background-image: -webkit-linear-gradient(top, black, white);
-    background-image: -moz-linear-gradient(top, black, white);
-    background-image: linear-gradient(to bottom, black, white); */
-}
+    text-align: right;
+} 
+
 .box {
-    /* border: 2px solid black; */
     overflow: scroll;
-    bottom: 40px;
+    bottom: 40px; 
 }
 
 .action_button {
     float: right;
     font-size: 1.4em;
-    width: 10%;
+    width: 50%;
     border: 2px solid black;
     border-radius: 5px;
     background-color: white;
     color: black;
-    /* background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(white));
-    background-image: -webkit-linear-gradient(top, black, white);
-    background-image: -moz-linear-gradient(top, black, white);
-    background-image: linear-gradient(to bottom, black, white); */
+}
+
+.floatright {
+    text-align: center;
+    float: right;
+    
 }
 
 .header {
-    margin-top: 0px;
+    margin-top: 20px;
     margin-bottom: 10px;
     padding: 12px;
     font-size: 24px;
     width: 100%;
     border: 2px solid black;
     border-radius: 5px;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(darkgray), to(white));
-    background-image: -webkit-linear-gradient(top, darkgray, white);
-    background-image: -moz-linear-gradient(top, darkgray, white);
-    background-image: linear-gradient(to bottom, darkgray, white);
+    background-color: black;
+    color: white;
+    text-align: left;
+}
+
+.groupbox {
+    display: none;
 }
 
 .footer {
@@ -70,4 +92,16 @@
 
 .center {
     text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.grouplist, .grouplist1 {
+    display: none;
 }

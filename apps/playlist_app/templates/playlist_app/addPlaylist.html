@@ -19,6 +19,11 @@
                         <input type="submit" name="logout" value="Logout {{request.session.first_name}}" class="action_button">
                     </form>
                     <h1>add playlist</h1>
+                    <div class="row">
+                        <div class="md-col-6">
+                        <a href="{% url 'music_app:index' %}">HOME</a> |
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <form action="{% url 'playlist_app:createPlaylist'%}" method='POST'>
@@ -30,8 +35,5 @@
             </div>
         </div>
     </div>
-        <div class="row">
-            <div class="col-md-6">
-    
 </body>
 </html>

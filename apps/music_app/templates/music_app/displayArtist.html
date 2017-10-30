@@ -13,47 +13,58 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron main">
-                    <form action="/logout">
-                        <input type="submit" name="logout" value="Logout {{request.session.first_name}}" class="action_button">
-                    </form>
+            <div class="col-md-4 floatright">
+                
+                <div class="main">
+                    <div class="right">
+                        <a href="{% url 'user_app:logout' %}">LOGOUT</a>
+                    </div>
                     <h1>{{artist.artist_name}}</h1>
                     <h4>{{artist.artist_bio}}</h4>
-                    <br>
-                    <div class="row">
-                        <div class="md-col-6">
-                        <a href="{% url 'music_app:index' %}">HOME</a> |
-                        <a href="{% url 'music_app:addAlbum' artist_id=artist.id %}">ADD ALBUM</a> |
-                        </div>
-                    </div>
                 </div>
-                
-           </div>
+            </div>
         </div>
-        
+
         <div class="row">
-            <div class="col-md-12">
-            <table class="table table-hover box">
-                <thead>
-                    <tr>
-                    <th>ALBUM NAME </th>  
-                    <th>YEAR</th>
-                    <th>ACTIONS</th>
-                    </tr>
-                    {% for album in albums %}
-                </thead>
-                <tbody>
-                    <tr>
-                    <td><a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">{{album.album_name}}</a></td>
-                    <td>{{album.album_year}}</td>
-                    <td>
-                        <a href="{% url 'music_app:deleteAlbum' album_id=album.id artist_id=artist.id %}">Delete Album</a> |
-                        <a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">Add Song</a>
-                    </td>
-                    </tr>
-                </tbody>
-                    {% endfor %}
-            </table>
+            <div class="md-col-4 floatright">
+                <hr>
+                <a href="{% url 'music_app:index' %}">HOME</a> |
+                <a href="{% url 'music_app:addAlbum' artist_id=artist.id %}">ADD ALBUM</a>
+            </div>
+        </div>
+                
+    
+        <div class="row">
+            <div class="col-md-4 floatright main">
+                <table class="table table-hover box">
+                    <thead>
+                        <tr>
+                        <th>ALBUM NAME </th>  
+                        <th>YEAR</th>
+                        <th></th>
+                        </tr>
+                        {% for album in albums %}
+                    </thead>
+                    <div class="main">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">{{album.album_name}}</a>
+                            </td>
+                            <td>
+                                {{album.album_year}}
+                            </td>
+                            <td>
+                                <a href="{% url 'music_app:deleteAlbum' album_id=album.id artist_id=artist.id %}">Delete Album</a> |
+                                <a href="{% url 'music_app:addSong' album_id=album.id artist_id=artist.id %}">Add Song</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    </div>
+                        {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

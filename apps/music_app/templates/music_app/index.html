@@ -15,60 +15,51 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="jumbotron main">
-                    <form action="/logout">
-                        <input type="submit" name="logout" value="Logout {{request.session.first_name}}" class="action_button">
-                    </form>
+                        <a href="{% url 'user_app:logout' %}">LOGOUT</a>
                     <h1>your music, {{request.session.first_name}}.</h1>
                     <div class="row">
-                        <div class="md-col-6">
-                        <a href="{% url 'music_app:addArtist' %}">NEW ARTIST</a> |
-                        <a href="{% url 'playlist_app:addPlaylist' %}">NEW PLAYLIST</a>
+                        <div class="md-col-4">
+                            <a href="">HOME</a> |
+                            <a href="{% url 'music_app:addArtist' %}">NEW ARTIST</a> |
+                            <a href="{% url 'playlist_app:addPlaylist' %}">NEW PLAYLIST</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
-                <table class="table table-hover box">
-                    <thead>
-                        <tr>
-                            <th><h1>all artists</h1></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for artist in artists %}
-                        <tr>
-                            <td><a href="{% url 'music_app:viewArtist' artist_id=artist.id %}">{{artist.artist_name}}</a></td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-6">
-                <table class="table table-hover box">
-                    <thead>
-                        <tr>
-                            <th><h1>your playlists</h1></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for playlist in playlists %}
-                        {% if playlist.user_id == request.session.user_id %}
-                        <tr>
-                            <td><a href="{% url 'playlist_app:viewPlaylist' playlist_id=playlist.id %}">{{playlist.playlist_name}}</a></td>
-                        </tr>
-                        {% endif %}
-                        {% endfor %}
-                    </tbody>
-                </table>
+            <div class="col-md-4 floatright">
+                <div class="group">
+                    <h1 class="left">artists</h1>
+                </div>
+                {% for artist in artists %}
+                <div class="grouplist">
+                    
+                    <h5><a href="{% url 'music_app:viewArtist' artist_id=artist.id %}">{{artist.artist_name}}</a></h5>
+                
+                </div>
+                    {% endfor %}
+
+                <div class="group1">
+                    <h1 class="left">playlists</h1></th>
+                </div>
+
+                {% for playlist in playlists %}
+                {% if playlist.user_id == request.session.user_id %}
+                <div class="grouplist1">
+                    <h5><a href="{% url 'playlist_app:viewPlaylist' playlist_id=playlist.id %}">{{playlist.playlist_name}}</a></h5>
+                </div>
+
+                    {% endif %}
+                    {% endfor %}
             </div>
         </div>
-    <div class="row">
-        <div col-md-12>
-            <h1 class="footer">&copyCopyright 2017 | Sportify Changos</h1>
+        
+        <div class="row">
+            <div col-md-12>
+                <h1 class="footer">&copyCopyright 2017 | The Chango Brothers</h1>
+            </div>
         </div>
     </div>
-
 </body>
 </html>
