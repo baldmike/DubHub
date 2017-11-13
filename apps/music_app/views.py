@@ -110,12 +110,12 @@ def allSongs(request, playlist_id):
     return render(request, 'music_app/allSongs.html', context)
 
 
-# def deleteSong(request, album_id, artist_id, song_id):
-#     song = Song.objects.get(id=song_id)
-#     song.delete()
-#     return redirect(reverse('music_app:viewSong', kwargs={'artist_id': artist_id, 'album_id':album_id, 'song_id':song_id}))
+def deleteSong(request, album_id, artist_id, song_id):
+    song = Song.objects.get(id=song_id)
+    song.delete()
+    return render(request, 'music_app/allSongs.html')
+    # return redirect(reverse('music_app:viewSong', kwargs={'artist_id': artist_id, 'album_id':album_id, 'song_id':song_id}))
 
-# ************************
 
 
 def search(request):

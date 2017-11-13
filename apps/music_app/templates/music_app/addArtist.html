@@ -30,7 +30,7 @@
         </div>
         <div class="col-md-4 floatright">
             <form action="{% url 'music_app:createArtist' %}" method='POST'>
-            {% csrf_token %}
+            {% CSRF_token %}
                 <input type='text' class="form-control" = name='artist_name' placeholder="artist name"><br>
                 <input type='text'class="form-control" name='artist_bio' placeholder="artist bio"><br>
                 <input type='submit' class="btn btn-primary" value='Create Artist'>

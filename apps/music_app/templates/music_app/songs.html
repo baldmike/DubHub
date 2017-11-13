@@ -49,7 +49,7 @@
                         <tr>
                             <td><a href="">{{song.song_name}}</a></td>
                             <td>{{song.song_year}}</td>
-                            <td><a href="{% url 'music_app:addSong' artist_id=artist.id album_id=album.id  %}">Show Song</a> |  <a href="{% url 'music_app:addSong' artist_id=artist.id album_id=album.id  %}">Delete Song</a> | 
+                            <td><a href="{% url 'music_app:addSong' artist_id=artist.id album_id=album.id  %}">Show Song</a> |  <a href="{% url 'music_app:deleteSong' artist_id=artist.id album_id=album.id  %}">Delete Song</a> | </td>
                         </tr>
                     </tbody>
                     {% endfor %}
